@@ -8,7 +8,13 @@ a <- read.table("taylor_lewis.txt",skip=1,header=TRUE)
   }
 }
 
-`score_to_numeric` <- function(score){
+`leg` <- function(n){subset(a,a$leg==n)[,-1]}
+
+`score_to_numeric` <- function(scores){sapply(scores,singlescore_to_numeric)}
+`singlescore_to_numeric` <- function(score){
+  stopifnot(length(score)==1)
+  if(is.na(score)){return(NA)}
+  if(score == "0"){return(0)}
   if(score=="NA"){return(NA)}
   if(score=="bull"){
     return(50)
@@ -43,16 +49,36 @@ actual_scores <- function(a){
   return(out)
 }
 
-`is_ok_leg` <- function(a){
-  players <- sort(unique(a$player))
-  stopifnot(minmax(which(a$player==players[1])%%2))
-  stopifnot(minmax(which(a$player==players[2])%%2))
+`is_ok_leg` <- function(x){  # e.g.: is_ok_leg(leg(3))
+  players <- sort(unique(x$player))
+  stopifnot(length(players)==2) # exactly  2 players
 
-    
-  
+  stopifnot(minmax(which(x$player==players[1])%%2)) # alternating play
+  stopifnot(minmax(which(x$player==players[2])%%2)) # alternating play
+
+  for(i in 1:2){  # for both players...
+    d_oneplayer <- subset(x,x$player==players[i])
+    darts_scores <- 
+      cbind(
+          score_to_numeric(d_oneplayer$score1),
+          score_to_numeric(d_oneplayer$score2),
+          score_to_numeric(d_oneplayer$score3)
+      )
+    o1 <- rowSums(darts_scores,na.rm=TRUE)
+    names(o1) <- NULL
+    o1 <- as.numeric(o1)
+    o2 <- d_oneplayer$announce
+    o2 <- as.numeric(o2)
+    stopifnot(identical(o1,o2))
+    }
+
+  winning_player <- x$player[nrow(x)]
+  d_winner <- subset(x,x$player==winning_player)
+  n <- nrow(d_winner)
+  stopifnot(sum(d_winner$announced,na.rm=TRUE) == 501)
   return(TRUE)
 }
 
 
 
-is_ok_leg(subset(a,a$leg==1))
+
