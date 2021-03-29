@@ -24,7 +24,7 @@ leg    player score1 aim1	score2 aim2	  score3     aim3 announced	needs
 3      lewis  t20    t20	t20    t20	  s19	     t19  139 		NA
 3      taylor s5     t20	t19    t19	  t19	     t19  119 		NA
 3      lewis  s18    t18 	s20    t20	  t18	     t18  92		128
-3      taylor t20    t20	s19    t19	  s14	     ?	  93 		153
+3      taylor t20    t20	s19    t19	  s14	     s14  93 		153
 3      lewis  d18    d18	NA     NA	  NA	     NA	  36 		36
 4      taylor s20    t20	t5     t20	  t20	     t20  95 		NA  # @5:48
 4      lewis  t20    t20	t20    t20	  s20	     t20  140 		NA
