@@ -1,6 +1,3 @@
-library(magrittr)
-a <- read.table("taylor_lewis.txt",skip=1,header=TRUE)
-
 `minmax` <- function(x,TOL=1e-11){
   if(max(x)-min(x) > TOL){
     return(FALSE)
@@ -9,7 +6,7 @@ a <- read.table("taylor_lewis.txt",skip=1,header=TRUE)
   }
 }
 
-`leg` <- function(n){subset(a,a$leg==n)[,-1]}
+`leg` <- function(a,n){subset(a,a$leg==n)[,-1]}
 
 `score_to_numeric` <- function(scores){sapply(scores,singlescore_to_numeric)}
 `singlescore_to_numeric` <- function(score){
@@ -80,8 +77,6 @@ actual_scores <- function(a){
   return(TRUE)
 }
 
-for(i in 1:25){is_ok_leg(leg(i))}
-
 starter <- function(x){   # starter(leg(3))
   x$player[1]
 }
@@ -89,10 +84,4 @@ starter <- function(x){   # starter(leg(3))
 winner <- function(x){   # winner(leg(3))
   jj <- x$player
   jj[length(jj)]
-}
-
-M <- matrix(0,2,2)
-dimnames(M) <- list(starter=c("lewis","taylor"),winner=c("lewis","taylor"))
-for(i in 1:25){
-  M[starter(leg(i)),winner(leg(i))] %<>% `+`(1)
 }
