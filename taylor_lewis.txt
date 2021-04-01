@@ -54,13 +54,13 @@ leg    player score1 aim1	score2 aim2	  score3     aim3 announced	needs
 6      taylor s20    t20	t20    t20	  s16	     t16  96		144
 6      lewis  s17    s17	t20    t20	  0	     d5	  77		87
 6      taylor s16    s16	d16    d16	  NA	     NA	  48		48
-7      lewis  t20    t20	t20    t20	  s1	     t20  121		NA
+7      lewis  t20    t20	t20    t20	  s1	     t20  121		NA # @11:55
 7      taylor t20    t20	t20    t20	  s20	     t20  140		NA
 7      lewis  s20    t20	s19    t19	  t19	     t19  96		NA
 7      taylor t20    t20	s1     t20	  s20	     t20  81		NA
 7      lewis  t20    t20	t20    t20	  t20	     t20  180 		NA
 7      taylor t20    t20	s20    t20	  t19	     t19  137		NA
-7      lewis  s18    t18 	s18    ? 	  s20	     ? 	  56		104
+7      lewis  s18    t18 	s18    t18 	  s20	     t20  56  		104
 7      taylor s20    t20	s20    t20	  s19	     t19  59		143
 7      lewis  s8     s8		0      d20	  0	     d20  8		48
 7      taylor t20    t20	d12    d12	  NA	     NA	  84		84

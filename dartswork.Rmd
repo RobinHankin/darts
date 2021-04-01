@@ -9,6 +9,9 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+https://www.youtube.com/watch?v=BB8GrKtZwaE&ab_channel=ProfessionalDartsCorporation
+
+
 ## Introduction
 
 The 2013 semi-final Grand Slam of Darts match between Phil Taylor and
@@ -32,4 +35,29 @@ dimnames(M) <- list(starter=c("lewis","taylor"),winner=c("lewis","taylor"))
 for(i in 1:25){
   M[starter(leg(a,i)),winner(leg(a,i))] %<>% `+`(1)
 }
+M
+```
+
+```{r}
+cannot_finish <- subset(a, is.na(a$needs))
+   can_finish <- subset(a,!is.na(a$needs))
+
+aim_cannot <- table(c(
+    cannot_finish[,3]==cannot_finish[,4],
+    cannot_finish[,5]==cannot_finish[,6],
+    cannot_finish[,7]==cannot_finish[,8]
+))
+
+aim_can <- table(c(
+    can_finish[,3]==can_finish[,4],
+    can_finish[,5]==can_finish[,6],
+    can_finish[,7]==can_finish[,8]
+))
+
+aim_can
+aim_cannot
+M <- rbind(aim_can,aim_cannot)
+dimnames(M) <- list(pressure=c(TRUE,FALSE),accurate=c(TRUE,FALSE))
+M
+fisher.test(M,alternative="greater")
 ```
